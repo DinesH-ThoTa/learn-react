@@ -1,11 +1,1 @@
-# Demo
-
-Some description!
-
-## Subheader
-
-Keep coding
-
-## Local development
-
-push the code
+This Repository contains the react learnings from scratch
