@@ -1,0 +1,33 @@
+{
+  "name": "learn-react",
+  "version": "1.0.0",
+  "description": "This Repository contains the react learnings from scratch",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DinesH-ThoTa/learn-react.git"
+  },
+  "author": "Dinesh Thota",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DinesH-ThoTa/learn-react/issues"
+  },
+  "homepage": "https://github.com/DinesH-ThoTa/learn-react#readme",
+  "devDependencies": {
+    "parcel": "^2.11.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browsersList": [
+    "last 2 versions"
+  ]
+    
+  
+}
