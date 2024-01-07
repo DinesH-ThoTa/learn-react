@@ -1,3 +1,42 @@
-#heading{
-    color: red;
+.header{
+    display: flex;
+    justify-content: space-between;
+    border: solid black 1px;
+    
+}
+
+.logo {
+    width: 150px; 
+}
+
+.nav-items ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-items ul  li{
+    font-size: 24px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.rest-card {
+    width: 200px;
+    padding: 5px;
+    margin: 2px;
+    background-color: whitesmoke;
+}
+
+.rest-card:hover {
+    border: solid black 1px;
+    cursor: pointer;
+}
+
+.rest-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.rest-logo{
+    width: 100%;
 }
