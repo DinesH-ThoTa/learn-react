@@ -19,3 +19,27 @@ Error Handling
 HTTPs
 Tree Shaking - remove unused code
 Different dev and prod bundles
+
+#Food - Ordering - App
+
+- Header
+- - Logo
+- - Nav Items
+- Body
+- - Search
+- - Restaurant container
+- - Restaurant cards
+-        - image
+-        - cuisine, rating,.....
+- Footer
+- - copyright
+- - Links
+
+# Import Export
+
+- default export
+  - export default name
+  - import name from location
+- named export
+  - export const name
+  - import {name} from location

@@ -1,64 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-/**
- * Header
- *  - Logo
- *  - Nav Items
- * Body
- *  - Search
- *  - Restaurant container
- *    - Restaurant cards
- *        - image
- *        - cuisine, rating,.....
- * Footer
- *  - copyright
- *  - Links
- */
-
-const Header = () => (
-  <div className="header">
-    <div className="logo-container">
-      <img
-        className="logo"
-        src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png?size=2"
-      />
-    </div>
-
-    <div className="nav-items">
-      <ul>
-        <li>Home</li>
-        <li>About us</li>
-        <li>Contact us</li>
-        <li>Cart</li>
-      </ul>
-    </div>
-  </div>
-);
-
-const RestaurantCard = (props) => {
-  const { resData } = props; //object destructuring
-  const { cloudinaryImageId, name, cuisines, avgRating } = resData?.info;
-  const { deliveryTime } = resData?.info?.sla;
-  return (
-    <div className="rest-card">
-      <img
-        className="rest-logo"
-        src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          cloudinaryImageId
-        }
-        alt="rest-logo"
-      />
-      <h3>{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRating}⭐</h4>
-      <h4>{deliveryTime} Mins</h4>
-    </div>
-  );
-};
-
-const restList = [
+let restList = [
   {
     info: {
       id: "25251",
@@ -1480,26 +1420,4 @@ const restList = [
   },
 ];
 
-const Body = () => (
-  <div className="body">
-    <div className="search">
-      <h4>Search</h4>
-    </div>
-
-    <div className="rest-container">
-      {restList.map((restaurant) => (
-        <RestaurantCard key={restaurant.info.id} resData={restaurant} />
-      ))}
-    </div>
-  </div>
-);
-
-const AppLayout = () => (
-  <div className="app">
-    <Header />
-    <Body />
-  </div>
-);
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+export default restList;
