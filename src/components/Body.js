@@ -1,55 +1,34 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import restList from "../utils/restList";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   // Local state variable - using useState hook
-  const [restaurantList, setrestaurantList] = useState(restList);
-  // const arr = useState(restList);
-  // console.log(arr);
-  // const restaurantList = arr[0];
-  // const setrestaurantList = arr[1];
-  // [restaurantList, setrestaurantList]
-  let restaurantListJS = [
-    {
-      info: {
-        id: "25251",
-        name: "Meridian Restaurant",
-        cloudinaryImageId: "cxvuxxwpkicbqo3nkqiy",
-        cuisines: ["Biryani", "Chinese", "Kebabs"],
-        avgRating: 4.3,
-        sla: {
-          deliveryTime: 23,
-        },
-      },
-    },
-    {
-      info: {
-        id: "25252",
-        name: "KFC",
-        cloudinaryImageId: "cxvuxxwpkicbqo3nkqiy",
-        cuisines: ["Biryani", "Chinese", "Kebabs"],
-        avgRating: 3,
-        sla: {
-          deliveryTime: 23,
-        },
-      },
-    },
-    {
-      info: {
-        id: "25253",
-        name: "MCD",
-        cloudinaryImageId: "cxvuxxwpkicbqo3nkqiy",
-        cuisines: ["Biryani", "Chinese", "Kebabs"],
-        avgRating: 4.1,
-        sla: {
-          deliveryTime: 23,
-        },
-      },
-    },
-  ];
+  const [restaurantList, setrestaurantList] = useState([]);
 
-  return (
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.406498&lng=78.47724389999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+
+    const json = await data.json();
+    console.log(json);
+    setrestaurantList(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
+
+  if (restaurantList.length === 0) {
+    return <Shimmer />;
+  }
+  return restaurantList.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
         <button
