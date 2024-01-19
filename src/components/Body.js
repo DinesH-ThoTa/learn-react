@@ -2,6 +2,8 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
+import { REST_LIST_URL } from "../utils/constants";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   // Local state variable - using useState hook
@@ -14,9 +16,7 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    const data = await fetch(REST_LIST_URL);
 
     const json = await data.json();
     setrestaurantList(
@@ -27,6 +27,13 @@ const Body = () => {
     );
   };
 
+  const status = useOnlineStatus();
+  if (status === false) {
+    return <h1>you are offline</h1>;
+  }
+  if (restaurantList === undefined) {
+    return <h1>Restaurants not found...Please try after a while.. </h1>;
+  }
   return restaurantList.length === 0 ? (
     <Shimmer />
   ) : (
